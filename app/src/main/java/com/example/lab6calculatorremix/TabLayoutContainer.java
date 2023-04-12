@@ -46,7 +46,7 @@ public class TabLayoutContainer extends Fragment {
                 tab.setText("Fahrenheit to Celsius Conversion");}
                 if (position == 1){
                     tab.setText("Tip Calculator");}
-                else {
+                if (position == 2) {
                     tab.setText("Distance Calculator");}
             }
         }).attach();
