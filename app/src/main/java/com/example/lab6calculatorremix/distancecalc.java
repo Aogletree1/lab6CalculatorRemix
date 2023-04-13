@@ -47,15 +47,14 @@ public class distancecalc extends Fragment {
 
                 if (tag.equals("distanceConvert")) {
 
-                    valueMiles = valueMiles.findViewById(R.id.mileOutput);
-                    valueKilometers = valueKilometers.findViewById(R.id.kilometerOutput);
-
-                    String strMiles = valueMiles.getText().toString();
-                    String strKilometers = valueKilometers.getText().toString();
 
 
+                    String strMiles = binding.mileOutput.getText().toString();
+                    String strKilometers = binding.kilometerOutput.getText().toString();
 
-                    if(valueMiles != null){
+
+
+                    if(strMiles != null){
                         try {
 
                             miles = Double.parseDouble(strMiles);
@@ -63,16 +62,16 @@ public class distancecalc extends Fragment {
                             kilometers = (miles * 1.609344);
 
 
-                            binding.mileOutput.setText(String.valueOf(df.format(kilometers)));
-                            binding.kilometerOutput.setText(String.valueOf(df.format(miles)));
+                            binding.mileOutput.setText(String.valueOf(miles));
+                            binding.kilometerOutput.setText(String.valueOf(kilometers));
                         }
                         catch (Exception e){
                             kilometers = Double.parseDouble(strKilometers);
 
                             miles = (kilometers * 0.621371);
 
-                            binding.mileOutput.setText(String.valueOf(df.format(kilometers)));
-                            binding.kilometerOutput.setText(String.valueOf(df.format(miles)));
+                            binding.mileOutput.setText(String.valueOf(miles));
+                            binding.kilometerOutput.setText(String.valueOf(kilometers));
                         }
 
 

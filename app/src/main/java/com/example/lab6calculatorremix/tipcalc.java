@@ -21,6 +21,7 @@ public class tipcalc extends Fragment {
     EditText valueTotalBill;
     EditText valueTipPercentage;
     private float totalPerPerson;
+    private float totalTip;
 
     DecimalFormat df = new DecimalFormat(".00");
 
@@ -45,27 +46,29 @@ public class tipcalc extends Fragment {
                 String tag = view.getTag().toString();
 
                 if (tag.equals("tipCalculate")){
-                    valueNumofPeople = valueNumofPeople.findViewById(R.id.valueNumofPeople);
-                    valueTotalBill = valueTotalBill.findViewById(R.id.valueTotalBill);
-                    valueTipPercentage = valueTipPercentage.findViewById(R.id.valueTotalBill);
 
 
-                    String NumofPeople = valueNumofPeople.getText().toString();
-                    String TotalBill = valueTotalBill.getText().toString();
-                    String TipPercent = valueTipPercentage.getText().toString();
+                    String NumofPeople = binding.valueNumofPeople.getText().toString();
+                    String TotalBill = binding.valueTotalBill.getText().toString();
+                    String TipPercent = binding.valueTipPercentage.getText().toString();
 
+                    try{
                     int numofPeople = Integer.parseInt(NumofPeople);
                     float totalBill = Float.parseFloat(TotalBill);
-                    float tipPercent = Integer.parseInt(TipPercent);
+                    float tipPercent = Float.parseFloat(TipPercent);
                     tipPercent = tipPercent/100;
 
 
+                    totalTip = (totalBill * tipPercent);
                     totalPerPerson = ((totalBill * (tipPercent)) + totalBill) / numofPeople;
 
 
-                    binding.end.setText(String.valueOf("Total Per Person: $ " + df.format(totalPerPerson)));
+                    binding.end.setText(String.valueOf("Total Tip: $" + df.format(totalTip) + "\n" +
+                            "Total Per Person: $ " + df.format(totalPerPerson)));
 
+                        }
 
+                    catch (Exception e){e.printStackTrace();}
 
                 }
 

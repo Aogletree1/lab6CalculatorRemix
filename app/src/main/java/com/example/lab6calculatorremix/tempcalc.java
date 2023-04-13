@@ -48,16 +48,15 @@ public class tempcalc extends Fragment {
 
                 if (tag.equals("tempConvert")) {
 
-                    valueReportFahrenheit = valueReportFahrenheit.findViewById(R.id.reportFahrenheit);
-                    valueReportCelsius = valueReportCelsius.findViewById(R.id.reportCelsius);
-
-                    String strFahrenheit = valueReportFahrenheit.getText().toString();
-                    String strCelsius = valueReportCelsius.getText().toString();
 
 
+                    String strFahrenheit = binding.reportFahrenheit.getText().toString();
+                    String strCelsius = binding.reportCelsius.getText().toString();
 
-                    if(valueReportFahrenheit != null){
+                    if(strFahrenheit != null){
                         try {
+
+
 
                             fahrenheit = Float.parseFloat(strFahrenheit);
 
@@ -66,14 +65,23 @@ public class tempcalc extends Fragment {
 
                             binding.reportCelsius.setText(String.valueOf(df.format(celsius)));
                             binding.reportFahrenheit.setText(String.valueOf(df.format(fahrenheit)));
+
+                            fahrenheit = 0;
+                            celsius = 0;
                         }
                         catch (Exception e){
+
+
+
                             celsius = Float.parseFloat(strCelsius);
 
                             fahrenheit = (celsius * 9/5) + 32;
 
                             binding.reportCelsius.setText(String.valueOf(df.format(celsius)));
                             binding.reportFahrenheit.setText(String.valueOf(df.format(fahrenheit)));
+
+                            fahrenheit = 0;
+                            celsius = 0;
                         }
 
 
