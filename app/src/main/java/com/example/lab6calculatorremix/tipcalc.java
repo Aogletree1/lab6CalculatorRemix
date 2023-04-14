@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import com.example.lab6calculatorremix.databinding.TipcalcBinding;
 
@@ -68,7 +70,12 @@ public class tipcalc extends Fragment {
 
                         }
 
-                    catch (Exception e){e.printStackTrace();}
+                    catch (Exception e){
+
+                        e.printStackTrace();
+                        Toast toast = Toast.makeText(binding.getRoot().getContext(), "Error: Please enter for all three inputs.", Toast.LENGTH_SHORT);
+                        toast.show();
+                        }
 
                 }
 
